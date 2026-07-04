@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - CAECO</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Contactez CAECO : formulaire de contact, demande de partenariat et demande d'informations. Retrouvez notre adresse, notre carte et nos réseaux sociaux.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23163b6d'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Arial,Helvetica,sans-serif' fill='white' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+    <meta property="og:title" content="Contact - CAECO">
+    <meta property="og:description" content="Contactez CAECO : formulaire de contact, demande de partenariat et demande d'informations. Retrouvez notre adresse, notre carte et nos réseaux sociaux.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/og-image.png">
+    <meta property="og:locale" content="fr_HT">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+<header>
+    <img src="images/logo.png" alt="Logo de CAECO" class="logo">
+    <h1>CAECO</h1>
+    <a href="login.html" class="btn login-btn">CONNEXION</a>
+    <nav aria-label="Navigation principale">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Connexion</a></li>
+            <li><a href="download.html">Télécharger l'application</a></li>
+            <li><a href="newsletter.html">Newsletter</a></li>
+            <li><a href="blog.html">Publications</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <!-- INTRODUCTION -->
+    <section class="container intro">
+        <h2>Contactez-nous</h2>
+        <p>Une question, un projet de partenariat ou besoin d'informations sur nos services ? L'équipe CAECO vous répond.</p>
+    </section>
+
+    <!-- COORDONNEES, CARTE ET RESEAUX SOCIAUX -->
+    <section class="container contact-info">
+        <h2>Nos coordonnées</h2>
+        <div class="contact-info-grid">
+            <div class="contact-details">
+                <p><strong>Adresse :</strong><br>
+                    ISTEAH, Croix-des-Bouquets<br>
+                    Port-au-Prince, Haïti
+                    <!-- Adresse à confirmer et à ajuster avec l'adresse exacte de CAECO -->
+                </p>
+                <p><strong>Téléphone :</strong> <a href="tel:+50900000000">+509 00 00 0000</a></p>
+                <p><strong>Email :</strong> <a href="mailto:contact@caeco.com">contact@caeco.com</a></p>
+                <p><strong>Horaires :</strong> Lundi - Vendredi, 8h00 - 17h00</p>
+
+                <h3>Suivez-nous</h3>
+                <ul class="social-icons">
+                    <li>
+                        <a href="(Lien Facebook)" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a>
+                    </li>
+                    <li>
+                        <a href="(Lien Instagram)" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a>
+                    </li>
+                    <li>
+                        <a href="Lien LinkedIn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
+                    </li>
+                    <li>
+                        <a href="(Lien Twitter)" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"></a>
+                    </li>
+                    <li>
+                        <a href="(Lien WhatsApp)" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"></a>
+                    </li>
+                    <li>
+                        <a href="Lien YouTube" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="map-container">
+                <iframe
+                    title="Localisation de CAECO"
+                    src="Lien Google Maps de l'adresse exacte de CAECO"
+                    width="100%"
+                    height="350"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULAIRE DE CONTACT -->
+    <section class="container contact-form-section" id="formulaire-contact">
+        <h2>Formulaire de contact</h2>
+        <p>Une question générale ou une remarque ? Écrivez-nous.</p>
+        <form action="/submit_form" method="post" class="form contact-form">
+            <label for="contact-nom">Nom complet :</label>
+            <input type="text" id="contact-nom" name="nom" placeholder="Votre nom ici" required>
+
+            <label for="contact-email">Email :</label>
+            <input type="email" id="contact-email" name="email" placeholder="Votre email ici" required>
+
+            <label for="contact-telephone">Téléphone :</label>
+            <input type="tel" id="contact-telephone" name="telephone" placeholder="Votre numéro de téléphone">
+
+            <label for="contact-sujet">Sujet :</label>
+            <input type="text" id="contact-sujet" name="sujet" placeholder="Sujet de votre message" required>
+
+            <label for="contact-message">Message :</label>
+            <textarea id="contact-message" name="message" rows="5" placeholder="Votre message ici" required></textarea>
+
+            <div>
+                <input type="checkbox" id="contact-terms" name="terms" required>
+                <label for="contact-terms">J'accepte les termes et conditions</label>
+            </div>
+
+            <button type="submit">Envoyer le message</button>
+        </form>
+    </section>
+
+    <!-- FORMULAIRE DE PARTENARIAT -->
+    <section class="container partnership-form-section" id="formulaire-partenariat">
+        <h2>Formulaire de partenariat</h2>
+        <p>Vous représentez une entreprise, une institution ou une organisation et souhaitez collaborer avec CAECO ?</p>
+        <form action="/submit_form" method="post" class="form partnership-form">
+            <label for="partner-organisation">Nom de l'institution :</label>
+            <input type="text" id="partner-organisation" name="organisation" placeholder="Nom de votre entreprise ou organisation" required>
+
+            <label for="partner-nom">Nom du contact :</label>
+            <input type="text" id="partner-nom" name="nom" placeholder="Votre nom ici" required>
+
+            <label for="partner-email">Email :</label>
+            <input type="email" id="partner-email" name="email" placeholder="Votre email ici" required>
+
+            <label for="partner-telephone">Téléphone :</label>
+            <input type="tel" id="partner-telephone" name="telephone" placeholder="Votre numéro de téléphone">
+
+            <label for="partner-type">Type de partenariat :</label>
+            <select id="partner-type" name="type_partenariat" required>
+                <option value="">-- Sélectionnez --</option>
+                <option value="technique">Partenariat technique / ingénierie</option>
+                <option value="immobilier">Partenariat immobilier</option>
+                <option value="financier">Partenariat financier / investisseur</option>
+                <option value="institutionnel">Partenariat institutionnel / académique</option>
+                <option value="autre">Autre</option>
+            </select>
+
+            <label for="partner-description">Description du projet :</label>
+            <textarea id="partner-description" name="description" rows="5" placeholder="Décrivez votre projet de partenariat" required></textarea>
+
+            <div>
+                <input type="checkbox" id="partner-terms" name="terms" required>
+                <label for="partner-terms">J'accepte les termes et conditions</label>
+            </div>
+
+            <button type="submit">Envoyer la demande</button>
+        </form>
+    </section>
+
+    <!-- FORMULAIRE DE DEMANDE D'INFORMATIONS -->
+    <section class="container infos-form-section" id="formulaire-informations">
+        <h2>Demande d'informations</h2>
+        <p>Vous souhaitez en savoir plus sur l'un de nos services ?</p>
+        <form action="/submit_form" method="post" class="form infos-form">
+            <label for="infos-nom">Nom complet :</label>
+            <input type="text" id="infos-nom" name="nom" placeholder="Votre nom ici" required>
+
+            <label for="infos-email">Email :</label>
+            <input type="email" id="infos-email" name="email" placeholder="Votre email ici" required>
+
+            <label for="infos-telephone">Téléphone :</label>
+            <input type="tel" id="infos-telephone" name="telephone" placeholder="Votre numéro de téléphone">
+
+            <label for="infos-service">Service concerné :</label>
+            <select id="infos-service" name="service" required>
+                <option value="">-- Sélectionnez --</option>
+                <option value="ingenierie">Services d'ingénierie de construction</option>
+                <option value="immobilier">Services immobiliers</option>
+                <option value="housekeeper">Services de housekeeper</option>
+                <option value="consultations">Services de consultations et formations</option>
+                <option value="divers">Services divers</option>
+            </select>
+
+            <label for="infos-message">Votre demande :</label>
+            <textarea id="infos-message" name="message" rows="5" placeholder="Précisez votre demande d'informations" required></textarea>
+
+            <div>
+                <input type="checkbox" id="infos-terms" name="terms" required>
+                <label for="infos-terms">J'accepte les termes et conditions</label>
+            </div>
+
+            <button type="submit">Envoyer la demande</button>
+        </form>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-section">
+        <img src="images/logo.png" alt="Logo de CAECO" class="logo">
+        <p>Avec CAECO, votre CAS fera ECHOS !</p>
+        <nav aria-label="Navigation pied de page">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Connexion</a></li>
+                <li><a href="download.html">Télécharger l'application</a></li>
+                <li><a href="newsletter.html">Newsletter</a></li>
+                <li><a href="blog.html">Publications</a></li>
+                <li class="dropdown">
+                    <a href="#">Pages de confidentialité ▾</a>
+                    <ul class="sous-menu">
+                        <li><a href="privacy.html">Confidentialité</a></li>
+                        <li><a href="cgu.html">Conditions d'utilisation</a></li>
+                        <li><a href="cookies.html">Gestion des cookies</a></li>
+                        <li><a href="mapsite.html">Plan du site</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <h3>Contactez-nous</h3>
+        <p>Email : contact@caeco.com</p>
+        <p>&copy; 2026 CAECO. Tous droits réservés.</p>
+        <p><a href="mapsite.html">Plan du site</a></p>
+
+    </div>
+</footer>
+
+</body>
+</html>
