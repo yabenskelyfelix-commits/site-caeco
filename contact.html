@@ -1,12 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - CAECO</title>
     <link rel="stylesheet" href="style.css">
+    <script src="js/main.js" defer></script>
     <meta name="description" content="Contactez CAECO : formulaire de contact, demande de partenariat et demande d'informations. Retrouvez notre adresse, notre carte et nos réseaux sociaux.">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23163b6d'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Arial,Helvetica,sans-serif' fill='white' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230E2233'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Arial,Helvetica,sans-serif' fill='%23AED8F1' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
     <meta property="og:title" content="Contact - CAECO">
     <meta property="og:description" content="Contactez CAECO : formulaire de contact, demande de partenariat et demande d'informations. Retrouvez notre adresse, notre carte et nos réseaux sociaux.">
     <meta property="og:type" content="website">
@@ -16,28 +17,11 @@
 </head>
 <body>
 
-<header>
-    <img src="images/logo.png" alt="Logo de CAECO" class="logo">
-    <h1>CAECO</h1>
-    <a href="login.html" class="btn login-btn">CONNEXION</a>
-    <nav aria-label="Navigation principale">
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="about.html">À propos</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="login.html">Connexion</a></li>
-            <li><a href="download.html">Télécharger l'application</a></li>
-            <li><a href="newsletter.html">Newsletter</a></li>
-            <li><a href="blog.html">Publications</a></li>
-        </ul>
-    </nav>
-</header>
-
+<!-- Le header est chargé automatiquement depuis base.html par js/main.js -->
 <main>
 
     <!-- INTRODUCTION -->
-    <section class="container intro">
+    <section class="container page-intro">
         <h2>Contactez-nous</h2>
         <p>Une question, un projet de partenariat ou besoin d'informations sur nos services ? L'équipe CAECO vous répond.</p>
     </section>
@@ -58,31 +42,23 @@
 
                 <h3>Suivez-nous</h3>
                 <ul class="social-icons">
-                    <li>
-                        <a href="(Lien Facebook)" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a>
-                    </li>
-                    <li>
-                        <a href="(Lien Instagram)" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a>
-                    </li>
-                    <li>
-                        <a href="Lien LinkedIn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
-                    </li>
-                    <li>
-                        <a href="(Lien Twitter)" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"></a>
-                    </li>
-                    <li>
-                        <a href="(Lien WhatsApp)" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"></a>
-                    </li>
-                    <li>
-                        <a href="Lien YouTube" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a>
-                    </li>
+                    <!-- [À COMPLÉTER] Remplacez chaque "#" par l'adresse réelle de votre page -->
+                    <li><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.55-1.5h1.65V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.3H7.6V14h2.7v8z"/></svg></a></li>
+                    <li><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.4" fill="currentColor" stroke="none"/></svg></a></li>
+                    <li><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><rect x="3" y="9.5" width="3.6" height="11.5"/><circle cx="4.8" cy="5.4" r="2"/><path d="M10 9.5h3.4v1.6c.5-.9 1.7-1.9 3.5-1.9 3 0 4.1 1.9 4.1 4.8v7h-3.6v-6.4c0-1.5-.4-2.5-1.8-2.5-1.3 0-2 .9-2 2.5V21H10z"/></svg></a></li>
+                    <li><a href="#" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M4 3h4.6l4.2 5.9L17.8 3H21l-6.6 8 7 10h-4.6l-4.6-6.5L6.2 21H3l7.2-8.6z"/></svg></a></li>
+                    <li><a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z"/><path d="M8.8 7.8c.3-.6.7-.6 1-.6h.6c.2 0 .5 0 .7.5.2.6.7 1.7.7 1.8 0 .2 0 .4-.2.6l-.5.6c-.1.2-.2.4 0 .7a7 7 0 0 0 3 2.9c.3.1.5.1.7-.1l.6-.7c.2-.3.4-.2.7-.1l1.8.9" fill="none" stroke-width="1.8"/></svg></a></li>
+                    <li><a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10.2 9.2l5 2.8-5 2.8z" fill="currentColor" stroke="none"/></svg></a></li>
                 </ul>
             </div>
 
             <div class="map-container">
+                <!-- [À COMPLÉTER] Carte provisoire centrée sur Croix-des-Bouquets.
+                     Dès que l'adresse exacte est confirmée : sur Google Maps, cherchez
+                     l'adresse > Partager > Intégrer une carte > copiez le src ici. -->
                 <iframe
-                    title="Localisation de CAECO"
-                    src="Lien Google Maps de l'adresse exacte de CAECO"
+                    title="Localisation de CAECO (Croix-des-Bouquets, Haïti)"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-72.29%2C18.53%2C-72.16%2C18.62&amp;layer=mapnik&amp;marker=18.575%2C-72.225"
                     width="100%"
                     height="350"
                     style="border:0;"
@@ -200,39 +176,7 @@
 
 </main>
 
-<footer>
-    <div class="footer-section">
-        <img src="images/logo.png" alt="Logo de CAECO" class="logo">
-        <p>Avec CAECO, votre CAS fera ECHOS !</p>
-        <nav aria-label="Navigation pied de page">
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="about.html">À propos</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="login.html">Connexion</a></li>
-                <li><a href="download.html">Télécharger l'application</a></li>
-                <li><a href="newsletter.html">Newsletter</a></li>
-                <li><a href="blog.html">Publications</a></li>
-                <li class="dropdown">
-                    <a href="#">Pages de confidentialité ▾</a>
-                    <ul class="sous-menu">
-                        <li><a href="privacy.html">Confidentialité</a></li>
-                        <li><a href="cgu.html">Conditions d'utilisation</a></li>
-                        <li><a href="cookies.html">Gestion des cookies</a></li>
-                        <li><a href="mapsite.html">Plan du site</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
 
-        <h3>Contactez-nous</h3>
-        <p>Email : contact@caeco.com</p>
-        <p>&copy; 2026 CAECO. Tous droits réservés.</p>
-        <p><a href="mapsite.html">Plan du site</a></p>
-
-    </div>
-</footer>
-
+<!-- Le footer est chargé automatiquement depuis base.html par js/main.js -->
 </body>
 </html>

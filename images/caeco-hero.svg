@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" role="img" aria-label="Illustration CAECO : construction et technologie">
+  <defs>
+    <linearGradient id="tall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1D6E9F"/>
+      <stop offset="1" stop-color="#16577E"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#689E3E"/>
+      <stop offset="1" stop-color="#85B558"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Soleil -->
+  <circle cx="600" cy="96" r="46" fill="#AED8F1" opacity=".85"/>
+  <circle cx="600" cy="96" r="30" fill="#DDEEF9"/>
+
+  <!-- Colline / sol -->
+  <path d="M20 430 Q 380 350 740 430 L740 460 Q 380 490 20 460 Z" fill="url(#hill)"/>
+  <path d="M20 430 Q 380 350 740 430" fill="none" stroke="#416526" stroke-width="4" opacity=".35"/>
+
+  <!-- Grue -->
+  <g>
+    <rect x="96" y="120" width="14" height="290" rx="6" fill="#0E2233"/>
+    <rect x="60" y="112" width="330" height="14" rx="7" fill="#0E2233"/>
+    <path d="M103 126 L60 172 M103 126 L146 172 M103 172 L146 126 M103 172 L60 126" stroke="#0E2233" stroke-width="6" stroke-linecap="round"/>
+    <rect x="52" y="100" width="40" height="38" rx="8" fill="#1D6E9F"/>
+    <rect x="60" y="108" width="24" height="14" rx="4" fill="#AED8F1"/>
+    <!-- câble + charge « coin feuille » -->
+    <line x1="330" y1="126" x2="330" y2="212" stroke="#0E2233" stroke-width="5"/>
+    <path d="M312 212 H340 A12 12 0 0 1 352 224 V244 A20 20 0 0 1 332 264 H304 A12 12 0 0 1 292 252 V232 A20 20 0 0 1 312 212 Z" fill="#689E3E"/>
+    <path d="M304 236 H340 M304 248 H328" stroke="#E2EFD4" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Immeuble haut -->
+  <g>
+    <rect x="170" y="180" width="120" height="232" rx="10" fill="url(#tall)"/>
+    <rect x="170" y="180" width="120" height="16" rx="8" fill="#689E3E"/>
+    <g fill="#AED8F1">
+      <rect x="190" y="214" width="22" height="26" rx="4"/>
+      <rect x="224" y="214" width="22" height="26" rx="4"/>
+      <rect x="258" y="214" width="22" height="26" rx="4" fill="#7CC0E8"/>
+      <rect x="190" y="254" width="22" height="26" rx="4"/>
+      <rect x="224" y="254" width="22" height="26" rx="4" fill="#7CC0E8"/>
+      <rect x="258" y="254" width="22" height="26" rx="4"/>
+      <rect x="190" y="294" width="22" height="26" rx="4" fill="#7CC0E8"/>
+      <rect x="224" y="294" width="22" height="26" rx="4"/>
+      <rect x="258" y="294" width="22" height="26" rx="4"/>
+      <rect x="190" y="334" width="22" height="26" rx="4"/>
+      <rect x="224" y="334" width="22" height="26" rx="4"/>
+      <rect x="258" y="334" width="22" height="26" rx="4" fill="#7CC0E8"/>
+    </g>
+    <rect x="216" y="376" width="30" height="36" rx="6" fill="#0E2233"/>
+  </g>
+
+  <!-- Immeuble moyen -->
+  <g>
+    <rect x="316" y="264" width="104" height="148" rx="10" fill="#7CC0E8"/>
+    <rect x="316" y="264" width="104" height="14" rx="7" fill="#1D6E9F"/>
+    <g fill="#F2F9FD">
+      <rect x="334" y="294" width="20" height="22" rx="4"/>
+      <rect x="364" y="294" width="20" height="22" rx="4"/>
+      <rect x="394" y="294" width="20" height="22" rx="4"/>
+      <rect x="334" y="330" width="20" height="22" rx="4"/>
+      <rect x="364" y="330" width="20" height="22" rx="4"/>
+    </g>
+    <rect x="376" y="372" width="26" height="40" rx="5" fill="#16577E"/>
+  </g>
+
+  <!-- Maison au toit vert -->
+  <g>
+    <rect x="452" y="322" width="130" height="90" rx="10" fill="#F2F9FD"/>
+    <path d="M440 330 L517 268 L594 330 Q 596 340 586 340 L448 340 Q 438 340 440 330 Z" fill="#689E3E"/>
+    <path d="M452 340 L517 288 L582 340" fill="none" stroke="#527F30" stroke-width="4" opacity=".5"/>
+    <rect x="470" y="352" width="26" height="26" rx="5" fill="#AED8F1" stroke="#1D6E9F" stroke-width="3"/>
+    <rect x="536" y="352" width="26" height="60" rx="5" fill="#1D6E9F"/>
+    <circle cx="543" cy="384" r="3" fill="#AED8F1"/>
+  </g>
+
+  <!-- Réseau numérique : nœuds et liaisons -->
+  <g stroke="#527F30" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round" fill="none">
+    <path d="M230 158 Q 320 60 470 120 Q 560 156 604 210"/>
+    <path d="M470 120 Q 470 190 452 250"/>
+  </g>
+  <g>
+    <circle cx="230" cy="158" r="9" fill="#689E3E"/>
+    <circle cx="470" cy="120" r="12" fill="#1D6E9F"/>
+    <circle cx="470" cy="120" r="5" fill="#AED8F1"/>
+    <circle cx="604" cy="210" r="9" fill="#689E3E"/>
+    <circle cx="452" cy="250" r="7" fill="#7CC0E8"/>
+  </g>
+  <!-- Ondes wifi au-dessus de la maison -->
+  <g stroke="#1D6E9F" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M500 246 Q 517 232 534 246"/>
+    <path d="M490 232 Q 517 210 544 232"/>
+  </g>
+  <circle cx="517" cy="256" r="5" fill="#689E3E"/>
+
+  <!-- Feuillage -->
+  <g>
+    <path d="M660 412 Q 660 356 706 342 Q 706 398 660 412 Z" fill="#689E3E"/>
+    <path d="M660 412 Q 662 372 690 356" fill="none" stroke="#E2EFD4" stroke-width="3" stroke-linecap="round"/>
+    <path d="M652 416 Q 640 372 600 366 Q 606 410 652 416 Z" fill="#85B558"/>
+    <line x1="656" y1="446" x2="660" y2="404" stroke="#416526" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g>
+    <path d="M60 446 Q 56 406 20 398 Q 26 440 60 446 Z" fill="#85B558"/>
+    <line x1="64" y1="462" x2="58" y2="430" stroke="#416526" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>

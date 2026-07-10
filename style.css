@@ -1,0 +1,1402 @@
+/* ============================================================
+   CHARTE CHROMATIQUE — dérivée du logo
+   Couleurs sources (vérifiées) :
+     Bleu logo  : #AED8F1
+     Vert logo  : #689E3E
+
+   Échelle dérivée mathématiquement (teinte constante,
+   luminosité par paliers) + validation WCAG 2.1 AA :
+
+   BLEU (teinte ≈ 202°)
+     --blue-50  #F2F9FD   fond très clair
+     --blue-100 #DDEEF9   fond de section
+     --blue-200 #AED8F1   ← LOGO (décoratif uniquement)
+     --blue-300 #7CC0E8   décoratif / bordures
+     --blue-600 #1D6E9F   texte sur blanc  → 5.5:1  ✓ AA
+     --blue-700 #16577E   liens sur blanc  → 7.8:1  ✓ AAA
+     --blue-900 #0E2233   encre / pied de page
+
+   VERT (teinte ≈ 94°)
+     --green-100 #E2EFD4  fond doux
+     --green-300 #A3CB78  accent sur fond sombre → ✓ AA
+     --green-500 #689E3E  ← LOGO — 3.2:1 : réservé aux
+                            gros titres (≥24px) et éléments
+                            d'interface (bordures, icônes)
+                            conformément à WCAG 1.4.11 (3:1)
+     --green-600 #527F30  boutons (texte blanc) → 4.7:1 ✓ AA
+     --green-700 #416526  texte sur blanc      → 6.7:1 ✓ AA
+
+   Règle d'or : les deux couleurs exactes du logo servent
+   l'atmosphère (fonds, dégradés, bordures, lueurs) ; le texte
+   et les actions utilisent leurs déclinaisons foncées validées.
+   ============================================================ */
+
+:root{
+    /* Couleurs exactes du logo */
+    --logo-blue:#AED8F1;
+    --logo-green:#689E3E;
+
+    /* Échelle bleue */
+    --blue-50:#F2F9FD;
+    --blue-100:#DDEEF9;
+    --blue-200:#AED8F1;
+    --blue-300:#7CC0E8;
+    --blue-600:#1D6E9F;
+    --blue-700:#16577E;
+    --blue-900:#0E2233;
+
+    /* Échelle verte */
+    --green-100:#E2EFD4;
+    --green-300:#A3CB78;
+    --green-500:#689E3E;
+    --green-600:#527F30;
+    --green-700:#416526;
+
+    /* Rôles sémantiques */
+    --primary:var(--blue-600);        /* remplace l'ancien #4FC3F7 */
+    --primary-dark:var(--blue-700);
+    --secondary:var(--green-300);
+    --secondary-dark:var(--green-600);
+
+    --white:#ffffff;
+    --light:#F6FAF4;                  /* blanc légèrement végétal */
+    --dark:#1C2B22;                   /* encre bleu-vert, 14.9:1 sur blanc */
+    --gray:#44554B;                   /* texte courant, 8.1:1 sur blanc ✓ AAA */
+
+    --shadow:0 10px 25px rgba(14,34,51,.08);
+    --shadow-blue:0 8px 20px rgba(29,110,159,.28);
+    --shadow-green:0 8px 20px rgba(82,127,48,.30);
+
+    /* Signature visuelle : le « coin feuille » —
+       rayon asymétrique évoquant la feuille du logo */
+    --radius:22px 6px 22px 6px;
+    --radius-soft:14px;
+
+    --transition:.35s ease;
+    --max-width:1200px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',"Segoe UI",system-ui,sans-serif;
+    background:var(--light);
+    color:var(--dark);
+    line-height:1.7;
+}
+
+::selection{
+    background:var(--logo-blue);
+    color:var(--blue-900);
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+    transition:var(--transition);
+}
+
+ul{
+    list-style:none;
+}
+
+.container{
+    width:90%;
+    max-width:var(--max-width);
+    margin:auto;
+    padding:70px 0;
+}
+
+h1{
+    font-size:2.4rem;
+    font-weight:700;
+    color:var(--blue-700);            /* 7.8:1 ✓ AAA */
+    letter-spacing:-.02em;
+}
+
+h2{
+    font-size:2rem;
+    margin-bottom:20px;
+    color:var(--blue-700);
+    letter-spacing:-.01em;
+}
+
+/* Les h2 de section portent la double identité du logo :
+   un soulignement bleu→vert, discret mais reconnaissable */
+.about h2,
+.services h2,
+.publications h2,
+.contact h2{
+    display:inline-block;
+    padding-bottom:10px;
+    background:
+        linear-gradient(90deg,var(--logo-blue),var(--logo-green))
+        left bottom / 64px 5px no-repeat;
+    border-radius:0;
+}
+
+h3{
+    margin:15px 0;
+    color:var(--green-700);           /* 6.7:1 ✓ AA */
+    font-weight:600;
+}
+
+p{
+    margin-bottom:18px;
+    color:var(--gray);
+}
+
+/* ---------------- EN-TÊTE ---------------- */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--blue-100);
+    box-shadow:var(--shadow);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    padding:16px 5%;
+}
+
+/* Groupe de marque : logo + nom, cliquable vers l'accueil */
+.brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-right:auto;
+}
+
+header .logo{
+    width:64px;
+    height:auto;
+}
+
+header h1{
+    font-size:1.5rem;
+    line-height:1;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    align-items:center;
+}
+
+nav a{
+    position:relative;
+    font-weight:500;
+    color:var(--dark);
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:3px;
+    background:linear-gradient(90deg,var(--blue-600),var(--green-500));
+    transition:.3s;
+    border-radius:30px;
+}
+
+nav a:hover{
+    color:var(--blue-700);
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* ---------------- MENU HAMBURGER ---------------- */
+/* Invisible sur grand écran, il remplace la navigation
+   en ligne sous 900px. Trois barres bleu-700 (contraste
+   7.8:1 sur blanc ✓) qui se croisent quand le menu s'ouvre. */
+
+.menu-toggle{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    background:transparent;
+    border:none;
+    box-shadow:none;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.menu-toggle:hover{
+    background:var(--blue-50);
+    transform:none;
+    box-shadow:none;
+}
+
+.menu-bar{
+    display:block;
+    width:26px;
+    height:3px;
+    border-radius:3px;
+    background:var(--blue-700);
+    transition:var(--transition);
+}
+
+.menu-open .menu-toggle .menu-bar:nth-child(1){
+    transform:translateY(8px) rotate(45deg);
+}
+
+.menu-open .menu-toggle .menu-bar:nth-child(2){
+    opacity:0;
+}
+
+.menu-open .menu-toggle .menu-bar:nth-child(3){
+    transform:translateY(-8px) rotate(-45deg);
+}
+
+/* ---------------- BOUTONS ---------------- */
+/* Fond vert-600 #527F30 + texte blanc = 4.7:1 ✓ AA */
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    background:var(--green-600);
+    color:var(--white);
+    font-weight:600;
+    border-radius:var(--radius);
+    transition:var(--transition);
+    box-shadow:var(--shadow-green);
+}
+
+.btn:hover{
+    background:var(--blue-600);       /* texte blanc : 5.5:1 ✓ AA */
+    transform:translateY(-4px);
+    box-shadow:var(--shadow-blue);
+}
+
+.login-btn{
+    margin-left:25px;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+    background:var(--green-600);
+    color:var(--white);
+    padding:14px 28px;
+    border-radius:var(--radius);
+    font-size:1rem;
+    font-family:inherit;
+    font-weight:600;
+    transition:var(--transition);
+    box-shadow:var(--shadow-green);
+}
+
+button:hover{
+    background:var(--blue-600);
+    transform:translateY(-3px);
+    box-shadow:var(--shadow-blue);
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes floating{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+    100%{transform:translateY(0);}
+}
+
+section{
+    animation:fadeUp 1s ease;
+}
+
+/* ---------------- HÉROS ---------------- */
+/* Le bleu exact du logo devient le ciel de la page.
+   Sur ce fond clair, le texte passe en encre foncée :
+   #0E2233 sur #AED8F1 ≈ 11:1 ✓ AAA (le blanc, lui,
+   n'aurait donné que 1.5:1 — non conforme). */
+
+.intro{
+    min-height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+        radial-gradient(ellipse at 80% 10%,rgba(104,158,62,.20),transparent 55%),
+        linear-gradient(160deg,var(--logo-blue) 0%,var(--blue-100) 70%,var(--green-100) 100%);
+    border-radius:0 0 64px 12px;      /* coin feuille, version monumentale */
+    padding:100px 30px;
+    overflow:hidden;
+}
+
+.intro h2{
+    font-size:2.8rem;
+    color:var(--blue-900);
+    font-weight:700;
+    animation:fadeUp 1s ease;
+}
+
+.intro h3{
+    font-size:1.5rem;
+    color:var(--green-700);
+    font-weight:500;
+    margin-bottom:35px;
+}
+
+.intro .logo{
+    width:320px;
+    margin-top:30px;
+    animation:floating 4s infinite ease-in-out;
+    filter:drop-shadow(0 15px 20px rgba(14,34,51,.18));
+}
+
+/* ---------------- SECTIONS ---------------- */
+
+.about,
+.services,
+.publications,
+.contact{
+    background:var(--white);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    border:1px solid var(--blue-100);
+    margin-top:40px;
+    padding:50px;
+}
+
+.about:hover,
+.services:hover,
+.publications:hover,
+.contact:hover{
+    transform:translateY(-5px);
+    transition:var(--transition);
+}
+
+.about p{
+    font-size:1.05rem;
+}
+
+.about h3{
+    padding-left:15px;
+    border-left:5px solid var(--logo-green); /* bordure : usage décoratif, WCAG 1.4.11 ✓ */
+}
+
+.about ul{
+    margin:25px 0;
+}
+
+.about li{
+    position:relative;
+    padding-left:35px;
+    margin-bottom:15px;
+}
+
+.about li::before{
+    content:"✓";
+    position:absolute;
+    left:0;
+    top:0;
+    color:var(--green-700);
+    font-weight:bold;
+    font-size:1.2rem;
+}
+
+/* ---------------- SERVICES ---------------- */
+
+.services ul{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+.services li{
+    background:var(--blue-50);
+    padding:25px;
+    border-radius:var(--radius);
+    font-weight:500;
+    text-align:center;
+    border-bottom:4px solid var(--logo-blue);
+    transition:var(--transition);
+}
+
+.services li:hover{
+    background:var(--white);
+    transform:translateY(-8px);
+    box-shadow:var(--shadow);
+    border-bottom-color:var(--logo-green);
+}
+
+/* ---------------- PUBLICATIONS ---------------- */
+
+.blog-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin:35px 0;
+}
+
+.article-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:30px;
+    box-shadow:var(--shadow);
+    border-top:5px solid var(--logo-blue);
+    transition:var(--transition);
+}
+
+.article-card:hover{
+    transform:scale(1.03);
+    border-top-color:var(--logo-green);
+}
+
+.article-meta{
+    font-size:.85rem;
+    color:var(--green-700);
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+}
+
+.article-card h3 a{
+    color:var(--blue-700);
+}
+
+.article-card h3 a:hover{
+    color:var(--green-700);
+}
+
+/* ---------------- CONTACT ---------------- */
+
+.contact{
+    display:grid;
+    gap:40px;
+}
+
+.contact>h2{
+    text-align:center;
+    justify-self:center;
+    background-position:center bottom;
+}
+
+.contact-section,
+.newsletter-section{
+    background:linear-gradient(180deg,var(--blue-50),var(--green-100));
+    padding:35px;
+    border-radius:var(--radius);
+    border:1px solid var(--green-100);
+}
+
+.contact-section{
+    text-align:center;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+label{
+    font-weight:500;
+    color:var(--dark);
+}
+
+input,
+textarea,
+select{
+    padding:15px;
+    border-radius:var(--radius-soft);
+    border:2px solid var(--blue-200);  /* bordure logo : renforcée au focus */
+    font-family:inherit;
+    font-size:1rem;
+    transition:var(--transition);
+    background:var(--white);
+    color:var(--dark);
+    width:100%;
+}
+
+/* Zone de message : hauteur confortable, redimensionnable verticalement */
+textarea{
+    min-height:140px;
+    resize:vertical;
+    line-height:1.6;
+}
+
+/* Liste déroulante : flèche personnalisée aux couleurs du logo */
+select{
+    appearance:none;
+    -webkit-appearance:none;
+    cursor:pointer;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%2316577E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 18px center;
+    padding-right:48px;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    outline:none;
+    border-color:var(--blue-600);      /* composant actif : 5.5:1 ✓ WCAG 1.4.11 */
+    box-shadow:0 0 0 4px rgba(174,216,241,.55);
+}
+
+::placeholder{
+    color:#6B7A72;                     /* 4.6:1 sur blanc ✓ AA */
+    opacity:1;
+    font-family:inherit;
+}
+
+input[type="checkbox"]{
+    width:auto;
+    margin-right:10px;
+    accent-color:var(--green-600);
+    transform:scale(1.25);
+    cursor:pointer;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media(max-width:900px){
+    /* Header sur une ligne : marque | Connexion | hamburger */
+    header{gap:12px;}
+    .brand{margin-right:auto;}
+    .menu-toggle{display:flex;order:3;}
+    .login-btn{
+        order:2;
+        margin-left:0;
+        padding:10px 20px;
+        font-size:.9rem;
+    }
+
+    /* La navigation se replie sous le header, pleine largeur */
+    header nav{
+        order:4;
+        width:100%;
+        display:none;
+    }
+    .menu-open nav{
+        display:block;
+        animation:fadeUp .3s ease;
+    }
+    header nav ul{
+        flex-direction:column;
+        align-items:stretch;
+        gap:4px;
+        padding:12px 0 6px;
+        border-top:1px solid var(--blue-100);
+        margin-top:12px;
+    }
+    header nav a{
+        display:block;
+        padding:13px 16px;
+        border-radius:var(--radius-soft);
+    }
+    header nav a:hover{
+        background:var(--blue-50);
+    }
+    header nav a::after{
+        display:none;                 /* le fond survolé remplace le soulignement */
+    }
+
+    .container{width:92%;}
+    .intro h2{font-size:2.2rem;}
+    .about,.services,.publications,.contact{padding:35px;}
+}
+
+@media(max-width:600px){
+    header{padding:14px 20px;}
+    header .logo{width:52px;}
+    header h1{font-size:1.25rem;}
+    .login-btn{padding:9px 16px;font-size:.85rem;}
+    .intro{padding:70px 20px;border-radius:0 0 40px 8px;}
+    .intro h2{font-size:1.8rem;}
+    .intro h3{font-size:1.1rem;}
+    .intro .logo{width:220px;}
+    .container{padding:40px 0;}
+    .about,.services,.publications,.contact{padding:25px;}
+    h2{font-size:1.6rem;}
+    .services ul{grid-template-columns:1fr;}
+    .article-card{padding:20px;}
+}
+
+/* ---------------- PIED DE PAGE ---------------- */
+/* Encre bleu-nuit dérivée du bleu logo (teinte 202° conservée).
+   Texte blanc : 16.9:1 ✓ AAA — vert clair #A3CB78 : 8.4:1 ✓ AAA */
+
+footer{
+    background:linear-gradient(180deg,var(--blue-900),#122C1E);
+    color:var(--white);
+    margin-top:70px;
+    padding:60px 5% 30px;
+    border-radius:64px 12px 0 0;      /* écho inversé du héros */
+}
+
+/* Grille : marque (plus large) + 3 colonnes de liens */
+.footer-grid{
+    max-width:var(--max-width);
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr;
+    gap:45px;
+    align-items:start;
+    text-align:left;
+}
+
+/* Filet vertical discret entre les colonnes de liens */
+nav.footer-col{
+    border-left:1px solid rgba(174,216,241,.15);
+    padding-left:35px;
+}
+
+.footer-brand .logo{
+    width:96px;
+    padding:14px;
+    background:var(--white);
+    border-radius:var(--radius);
+    margin-bottom:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+.footer-brand a{
+    color:var(--logo-blue);           /* 12.3:1 sur bleu-nuit ✓ AAA */
+    text-decoration:underline;
+    text-underline-offset:3px;
+}
+
+.footer-brand a:hover{
+    color:var(--green-300);
+}
+
+footer p{
+    color:var(--white);
+    opacity:.92;
+}
+
+/* Titres de colonnes : petites capitales vertes, façon étiquette */
+.footer-col h3{
+    color:var(--green-300);           /* 8.4:1 ✓ AAA */
+    margin:0 0 18px;
+    font-size:.95rem;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    padding-bottom:8px;
+    background:
+        linear-gradient(90deg,var(--logo-blue),var(--logo-green))
+        left bottom / 36px 3px no-repeat;
+}
+
+.footer-col ul{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:13px;
+}
+
+footer nav li{
+    width:100%;
+}
+
+/* Liens alignés sur le titre, précédés d'un chevron vert */
+footer nav a{
+    position:relative;
+    display:inline-block;
+    padding-left:18px;
+    color:var(--white);
+    font-size:.95rem;
+    opacity:.92;
+    transition:var(--transition);
+}
+
+footer nav a::before{
+    content:"›";
+    position:absolute;
+    left:0;
+    top:-1px;
+    color:var(--green-300);
+    font-weight:700;
+    transition:var(--transition);
+}
+
+footer nav a::after{
+    display:none;                     /* pas de soulignement animé ici */
+}
+
+footer nav a:hover{
+    color:var(--green-300);
+    opacity:1;
+    transform:translateX(5px);
+}
+
+footer nav a:hover::before{
+    color:var(--logo-blue);
+}
+
+/* Barre légale séparée */
+.footer-bottom{
+    max-width:var(--max-width);
+    margin:50px auto 0;
+    padding-top:25px;
+    border-top:1px solid rgba(174,216,241,.25);
+    text-align:center;
+}
+
+.footer-bottom p{
+    font-size:.9rem;
+    margin:0;
+    opacity:.8;
+}
+
+section,
+.article-card,
+.services li,
+button,
+.btn{
+    transition:var(--transition);
+}
+
+/* ---------------- ACCESSIBILITÉ ---------------- */
+/* Anneau de focus visible : bleu-600 (5.5:1) — WCAG 2.4.7 ✓ */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible{
+    outline:3px solid var(--blue-600);
+    outline-offset:3px;
+    border-radius:4px;
+}
+
+/* Respect des préférences de mouvement — WCAG 2.3.3 ✓ */
+@media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+        animation:none !important;
+        transition:none !important;
+    }
+    html{scroll-behavior:auto;}
+}
+
+@media(max-width:900px){
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+        gap:35px;
+    }
+    nav.footer-col{
+        border-left:none;
+        padding-left:0;
+    }
+    .footer-brand{
+        grid-column:1 / -1;
+        text-align:center;
+    }
+    .footer-brand .logo{
+        margin:0 auto 18px;
+    }
+}
+
+@media(max-width:600px){
+    footer{padding:45px 20px 25px;border-radius:40px 8px 0 0;}
+    .footer-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+        text-align:center;
+    }
+    .footer-col ul{
+        align-items:center;
+    }
+    footer nav a{
+        padding-left:0;
+    }
+    footer nav a::before{
+        display:none;
+    }
+    footer nav a:hover{
+        transform:none;
+    }
+    .footer-col h3{
+        background-position:center bottom;
+    }
+    footer nav a{font-size:.9rem;}
+}
+/* ============================================================
+   PAGES INTERNES — styles des sections spécifiques
+   (bandeau compact, cartes, formulaires de compte, équipe,
+   statistiques, tableaux, plan du site, page 404, etc.)
+   ============================================================ */
+
+/* ---------------- BANDEAU COMPACT (.page-intro) ----------------
+   Version réduite du héros pour les pages internes :
+   un titre, une phrase, pas de 70vh. */
+
+.page-intro{
+    background:
+        radial-gradient(ellipse at 85% 0%,rgba(104,158,62,.18),transparent 55%),
+        linear-gradient(150deg,var(--logo-blue),var(--blue-100) 75%,var(--green-100));
+    border-radius:0 0 40px 8px;      /* coin feuille */
+    padding:64px 30px 56px;
+    text-align:center;
+}
+
+.page-intro h2{
+    display:inline-block;
+    font-size:2.2rem;
+    color:var(--blue-900);            /* ≈11:1 sur bleu logo ✓ AAA */
+    padding-bottom:14px;
+    margin-bottom:10px;
+    background:
+        linear-gradient(90deg,var(--blue-600),var(--green-500))
+        center bottom / 70px 5px no-repeat;
+}
+
+.page-intro p{
+    max-width:640px;
+    margin:0 auto;
+    color:var(--blue-900);
+    opacity:.85;
+}
+
+.page-intro img{
+    width:260px;
+    margin:25px auto 0;
+    filter:drop-shadow(0 12px 18px rgba(14,34,51,.18));
+}
+
+/* ---------------- CARTE UNIVERSELLE ----------------
+   Toute section de contenu devient automatiquement une carte
+   blanche au coin feuille — sauf les héros et les grilles. */
+
+main > .container:not(.intro):not(.page-intro):not(.blog-list){
+    background:var(--white);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    border:1px solid var(--blue-100);
+    margin-top:40px;
+    padding:50px;
+}
+
+/* Listes « à coches » des pages internes (services, valeurs,
+   fonctionnalités de l'app, avantages newsletter...) */
+.values li,
+.service-item ul li,
+.app-features li,
+.app-requirements li,
+.newsletter-benefits li{
+    position:relative;
+    padding-left:35px;
+    margin-bottom:14px;
+}
+
+.values li::before,
+.service-item ul li::before,
+.app-features li::before,
+.app-requirements li::before,
+.newsletter-benefits li::before{
+    content:"✓";
+    position:absolute;
+    left:0;
+    top:0;
+    color:var(--green-700);
+    font-weight:bold;
+    font-size:1.2rem;
+}
+
+.service-item .btn{
+    margin-top:15px;
+}
+
+/* ---------------- ACCUEIL : icônes des services ---------------- */
+
+.services li img{
+    width:64px;
+    height:64px;
+    margin:0 auto 14px;
+}
+
+.services li a{
+    font-weight:600;
+    color:var(--blue-700);
+}
+
+.services li a:hover{
+    color:var(--green-700);
+}
+
+/* ---------------- PAGES LÉGALES (CGU, confidentialité, cookies) ---------------- */
+
+.legal-text h2{
+    font-size:1.3rem;
+    margin-top:35px;
+    background:none;
+    padding-bottom:0;
+}
+
+.legal-text h2:first-of-type{
+    margin-top:0;
+}
+
+.legal-text a{
+    color:var(--blue-700);
+    text-decoration:underline;
+    text-underline-offset:3px;
+}
+
+/* ---------------- COMPTE : connexion, inscription, mot de passe ---------------- */
+
+.login-section{
+    max-width:560px;
+    margin-left:auto !important;
+    margin-right:auto !important;
+}
+
+.form-error{
+    background:#FDECEA;
+    border:1px solid #F5C6C0;
+    border-left:5px solid #B3261E;
+    color:#8C1D18;                    /* 7.4:1 sur le fond rosé ✓ AAA */
+    padding:14px 18px;
+    border-radius:var(--radius-soft);
+    margin-bottom:20px;
+    font-weight:500;
+}
+
+.form-links{
+    text-align:center;
+    margin-top:15px;
+    margin-bottom:0;
+}
+
+.form-links a{
+    color:var(--blue-700);
+    font-weight:500;
+    text-decoration:underline;
+    text-underline-offset:3px;
+}
+
+.form-links a:hover{
+    color:var(--green-700);
+}
+
+.signup-prompt{
+    margin-top:30px;
+    padding-top:25px;
+    border-top:1px solid var(--blue-100);
+    text-align:center;
+}
+
+.form-note{
+    font-size:.9rem;
+    color:var(--gray);
+    margin-top:14px;
+    margin-bottom:0;
+}
+
+/* ---------------- CONTACT : coordonnées, carte, réseaux ---------------- */
+
+.contact-info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+    align-items:start;
+}
+
+.map-container iframe{
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    display:block;
+}
+
+.social-icons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:12px;
+}
+
+.social-icons a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:46px;
+    height:46px;
+    border-radius:16px 5px 16px 5px;  /* coin feuille miniature */
+    background:var(--blue-50);
+    color:var(--blue-700);
+    border:1px solid var(--blue-100);
+    transition:var(--transition);
+}
+
+.social-icons a:hover{
+    background:var(--green-600);
+    color:var(--white);
+    transform:translateY(-4px);
+    box-shadow:var(--shadow-green);
+}
+
+/* ---------------- À PROPOS : équipe, chiffres, partenaires ---------------- */
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:28px;
+    margin-top:25px;
+}
+
+.team-member{
+    background:var(--blue-50);
+    border-radius:var(--radius);
+    padding:28px 22px;
+    text-align:center;
+    border-bottom:4px solid var(--logo-blue);
+    transition:var(--transition);
+}
+
+.team-member:hover{
+    transform:translateY(-6px);
+    border-bottom-color:var(--logo-green);
+    box-shadow:var(--shadow);
+}
+
+.team-photo{
+    width:110px;
+    height:110px;
+    object-fit:cover;
+    border-radius:50%;
+    margin:0 auto 16px;
+    border:4px solid var(--white);
+    box-shadow:var(--shadow);
+}
+
+.team-role{
+    color:var(--green-700);
+    font-weight:600;
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    margin-bottom:10px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:22px;
+    margin-top:25px;
+}
+
+.stats li{
+    background:var(--blue-50);
+    border-radius:var(--radius);
+    padding:28px 18px;
+    text-align:center;
+    border-bottom:4px solid var(--logo-green);
+}
+
+.stat-number{
+    display:block;
+    font-size:2.4rem;
+    font-weight:700;
+    color:var(--blue-700);
+    line-height:1.1;
+}
+
+.stat-label{
+    color:var(--gray);
+    font-size:.95rem;
+}
+
+.partners-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:20px;
+}
+
+.partners-list li{
+    background:var(--green-100);
+    color:var(--green-700);
+    font-weight:600;
+    padding:12px 24px;
+    border-radius:30px;
+}
+
+/* ---------------- TABLEAU DE BORD ---------------- */
+
+.requests-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:20px 0;
+}
+
+.requests-table th{
+    background:var(--blue-600);
+    color:var(--white);
+    padding:14px 16px;
+    text-align:left;
+    font-weight:600;
+}
+
+.requests-table th:first-child{border-radius:12px 0 0 0;}
+.requests-table th:last-child{border-radius:0 12px 0 0;}
+
+.requests-table td{
+    padding:13px 16px;
+    border-bottom:1px solid var(--blue-100);
+    color:var(--gray);
+}
+
+.requests-table tbody tr:nth-child(even){
+    background:var(--blue-50);
+}
+
+/* ---------------- PUBLICATIONS : liste et article ---------------- */
+
+.article-thumb{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:var(--radius-soft);
+    margin-bottom:16px;
+    background:var(--blue-50);
+}
+
+.article-card-content .btn{
+    margin-top:12px;
+    padding:10px 22px;
+    font-size:.9rem;
+}
+
+.article-cover{
+    width:100%;
+    max-height:380px;
+    object-fit:cover;
+    border-radius:var(--radius);
+    margin:20px 0 30px;
+    background:var(--blue-50);
+}
+
+.article-body p{
+    font-size:1.05rem;
+}
+
+.article-body h3{
+    margin-top:32px;
+}
+
+.article-meta a{
+    color:var(--blue-700);
+}
+
+.article-meta a:hover{
+    color:var(--green-700);
+}
+
+/* ---------------- TÉLÉCHARGEMENT DE L'APPLICATION ---------------- */
+
+.screenshots-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:22px;
+    margin-top:25px;
+}
+
+.screenshots-grid img{
+    width:100%;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    background:var(--blue-50);
+}
+
+.store-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    align-items:center;
+    margin:20px 0 30px;
+}
+
+.store-btn{
+    display:inline-block;
+    transition:var(--transition);
+}
+
+.store-btn img{
+    height:56px;
+    width:auto;
+}
+
+.store-btn:hover{
+    transform:translateY(-4px);
+}
+
+.qr-code{
+    text-align:center;
+    padding-top:25px;
+    border-top:1px solid var(--blue-100);
+}
+
+.qr-code img{
+    margin:0 auto 14px;
+    border:8px solid var(--white);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+}
+
+/* ---------------- PLAN DU SITE ---------------- */
+
+.sitemap ul{
+    margin:15px 0 30px;
+}
+
+.sitemap > ul > li{
+    font-weight:600;
+    margin-bottom:14px;
+}
+
+.sitemap ul ul{
+    margin:10px 0 12px 8px;
+    padding-left:22px;
+    border-left:3px solid var(--green-100);
+}
+
+.sitemap ul ul li{
+    font-weight:400;
+    margin:8px 0;
+}
+
+.sitemap a{
+    color:var(--blue-700);
+}
+
+.sitemap a:hover{
+    color:var(--green-700);
+    text-decoration:underline;
+    text-underline-offset:3px;
+}
+
+/* ---------------- PAGE 404 ---------------- */
+
+.error-404{
+    text-align:center;
+}
+
+.error-404 h2{
+    font-size:6.5rem;
+    line-height:1;
+    background:linear-gradient(135deg,var(--blue-600),var(--green-500));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    padding:0;
+    margin-bottom:10px;
+}
+
+.error-404 h3{
+    font-size:1.5rem;
+}
+
+.error-404 > p{
+    max-width:520px;
+    margin:0 auto 18px;
+}
+
+.error-actions{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin:25px 0 35px;
+}
+
+.error-links{
+    padding-top:25px;
+    border-top:1px solid var(--blue-100);
+}
+
+.error-links ul{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+    margin-top:10px;
+}
+
+.error-links a{
+    color:var(--blue-700);
+    font-weight:500;
+    text-decoration:underline;
+    text-underline-offset:3px;
+}
+
+.error-links a:hover{
+    color:var(--green-700);
+}
+
+/* ---------------- CTA multi-boutons ---------------- */
+
+.contact-section .btn{
+    margin:6px 8px;
+}
+
+/* ---------------- RESPONSIVE des pages internes ---------------- */
+
+@media(max-width:900px){
+    main > .container:not(.intro):not(.page-intro):not(.blog-list){
+        padding:35px;
+    }
+    .contact-info-grid{
+        grid-template-columns:1fr;
+    }
+    .page-intro h2{
+        font-size:1.9rem;
+    }
+}
+
+@media(max-width:600px){
+    main > .container:not(.intro):not(.page-intro):not(.blog-list){
+        padding:25px 20px;
+    }
+    .page-intro{
+        padding:48px 20px 42px;
+        border-radius:0 0 28px 6px;
+    }
+    .page-intro h2{
+        font-size:1.6rem;
+    }
+    .error-404 h2{
+        font-size:4.5rem;
+    }
+    /* Tableau défilant horizontalement sur petit écran */
+    .requests-table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+    .stat-number{
+        font-size:2rem;
+    }
+}
