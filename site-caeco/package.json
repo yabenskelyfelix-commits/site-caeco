@@ -1,0 +1,13 @@
+{
+  "name": "CAECO",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "live-server"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0"
+  }
+}
