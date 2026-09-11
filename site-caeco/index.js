@@ -8,16 +8,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const express = require('express');
-const app = express();
 app.use(express.json());
 
 app.post('/register', (req, res) => {
   const { prenom, nom, email, telephone, password } = req.body;
-  // 👉 Ici tu ajoutes la logique pour sauvegarder dans ta base
   res.json({ message: "Compte créé avec succès !" });
 });
 
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Serveur lancé sur le port ${PORT}`));
 
 app.use(express.urlencoded({ extended: false }));
