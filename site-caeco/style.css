@@ -349,18 +349,6 @@ section{
 
     text-align: center;
 
-    /* Image en arrière-plan */
-    background-image:
-        linear-gradient(
-            rgba(14, 34, 51, 0.30),
-            rgba(14, 34, 51, 0.30)
-        ),
-        url("images/caeco.png");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
     border-radius: 0 0 64px 12px;
     padding: 100px 30px;
 
@@ -388,8 +376,7 @@ section{
 
 .about,
 .services,
-.publications,
-.contact{
+.publications {
     background:var(--white);
     border-radius:var(--radius);
     box-shadow:var(--shadow);
@@ -425,13 +412,16 @@ section{
 }
 
 .about ul{
-    margin:25px 0;
+    margin:25px 0px;
+    margin-top: -10px;
+
 }
 
 .about li{
     position:relative;
     padding-left:35px;
-    margin-top: -10;
+    margin-top: 8px;
+    line-height: 1;
 }
 
 .about li::before{
@@ -442,7 +432,9 @@ section{
     color:var(--green-700);
     font-weight:bold;
     font-size:1.2rem;
+    margin-top: -2px;
 }
+
 
 /* ---------------- SERVICES ---------------- */
 
@@ -510,7 +502,8 @@ section{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:30px;
-    margin:35px 0;
+    margin:15px 60px;
+    margin-bottom: 20px;
 }
 
 .article-card{
@@ -556,8 +549,8 @@ section{
     margin-bottom:-60px;
 }
 
-.contact>h2{
-    text-align:center;
+.contact h2{
+    text-align:left;
     justify-self:center;
     background-position:center bottom;
     margin-bottom:-20px;
@@ -936,13 +929,29 @@ select:focus-visible{
     padding: 64px 30px 56px;
     text-align: center;
     overflow: hidden; /* Maintient les coins arrondis */
+    
 }
+
+.intro {
+    position: relative; /* Indispensable pour le pseudo-élément ::before */
+    /* 1. Le dégradé sombre doit être placé AVANT l'image pour se superposer dessus */
+    background: 
+        linear-gradient(180deg, rgba(14, 34, 51, 0.70), rgba(14, 34, 51, 0.50)),
+        url("images/caeco.png") center/cover no-repeat;
+    border-radius: 0 0 40px 8px;
+    padding: 64px 30px 56px;
+    text-align: center;
+    overflow: hidden; /* Maintient les coins arrondis */
+    
+}
+
 
 /* Pseudo-élément désactivé/nettoyé pour éviter le voile blanc écrasant */
 .page-intro::before {
     display: none; 
 }
 
+.intro h2,
 .page-intro h2 {
     position: relative;
     z-index: 2;
@@ -955,6 +964,7 @@ select:focus-visible{
     background: linear-gradient(90deg, var(--blue-600), var(--green-500)) center bottom / 70px 5px no-repeat;
 }
 
+.intro h3,
 .page-intro p {
     position: relative;
     z-index: 2;
@@ -981,6 +991,7 @@ main > .container:not(.intro):not(.page-intro):not(.blog-list){
 /* Listes « à coches » des pages internes (services, valeurs,
    fonctionnalités de l'app, avantages newsletter...) */
 .values li,
+.vision li::before,
 .service-item ul li,
 .app-features li,
 .app-requirements li,
@@ -991,6 +1002,7 @@ main > .container:not(.intro):not(.page-intro):not(.blog-list){
 }
 
 .values li::before,
+.vision li::before,
 .service-item ul li::before,
 .app-features li::before,
 .app-requirements li::before,
@@ -1215,50 +1227,69 @@ main > .container:not(.intro):not(.page-intro):not(.blog-list){
 /* ---------------- À PROPOS : équipe, chiffres, partenaires ---------------- */
 
 .history h2 {
-    margin-top: -20px;
-    margin-bottom: 5px;
+    margin-top: -45px;
+    margin-bottom: -10px;
 }
 
-.mission h2 {
-    margin-top: -20px;
-    margin-bottom: 5px;
+.history p {
+    margin-bottom: -30px;
+}
+.mission p,
+.values p,
+.achievements p,
+.team p {
+    margin-top: -25px;
+    margin-bottom: -25px;
+    margin-left: 0px;
 }
 
-.vision h2 {
-    margin-top: -20px;
-    margin-bottom: 5px;
-}
-
-.values h2 {
-    margin-top: -20px;
-    margin-bottom: 5px;
-}
-
-.achievements h2 {
-    margin-top: -20px;
-    margin-bottom: 5px;
-}
-
-.team h2 {
-    margin-top: -20px;
-    margin-bottom: 5px;
-}
-
-.partners h2 {
-    margin-top: -20px;
-    margin-bottom: 5px;
-}
-
-.contact h2 {
-    margin-top: -20px;
+.vision p {
     margin-bottom: 0px;
+    margin-top: -15px;
 }
+
+
+.mission h2,
+.vision h2,
+.values h2,
+.achievements h2,
+.team h2 {
+    margin-top: -45px ;
+    margin-bottom: 15px;
+    margin-left: 0px;
+}
+
+.partners h2,
+.contact h2 {
+    margin-top: -25px;
+    margin-bottom: -30px ;
+    margin-left: 0px ;
+    line-height: 1;
+}
+
+
+.partners ul{
+   margin-top: 45px;
+   margin-bottom: -30px ;
+
+}
+.values ul {
+    line-height: 1;
+    margin-top: -20px;
+}
+
+.values {
+    margin-top: -40px;
+}
+
 
 .team-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
     gap:28px;
-    margin-top:25px;
+    margin-top:15px;
+    margin-bottom: -10px;
+    
 }
 
 .team-member{
@@ -1274,6 +1305,19 @@ main > .container:not(.intro):not(.page-intro):not(.blog-list){
     transform:translateY(-6px);
     border-bottom-color:var(--logo-green);
     box-shadow:var(--shadow);
+}
+
+.team-member h3 {
+    line-height: 1;
+    margin-top: -10px;
+    margin-bottom: 30px ;
+}
+
+.team-member p {
+    line-height: 1;
+    margin-top: -10px;
+    margin-bottom: 15px ;
+    text-align: center ;
 }
 
 .team-photo{
@@ -1295,11 +1339,15 @@ main > .container:not(.intro):not(.page-intro):not(.blog-list){
     margin-bottom:10px;
 }
 
+.achievements h2 {
+    margin-top: -30px;
+}
+
 .stats{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
     gap:22px;
-    margin-top:25px;
+    margin-top:-15px;
 }
 
 .stats li{
@@ -1336,14 +1384,6 @@ main > .container:not(.intro):not(.page-intro):not(.blog-list){
     font-weight:600;
     padding:12px 24px;
     border-radius:30px;
-}
-
-.vision ul li{
-    content: "✓";
-    position:relative;
-    padding-left:35px;
-    margin-bottom:14px;
-
 }
 
 /* ---------------- TABLEAU DE BORD ---------------- */
