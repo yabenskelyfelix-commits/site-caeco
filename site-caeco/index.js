@@ -7,16 +7,6 @@ const userStore = require('./lib/userStore');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const express = require('express');
-app.use(express.json());
-
-app.post('/register', (req, res) => {
-  const { prenom, nom, email, telephone, password } = req.body;
-  res.json({ message: "Compte créé avec succès !" });
-});
-
-app.listen(PORT, () => console.log(`Serveur lancé sur le port ${PORT}`));
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -24,10 +14,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET || 'caeco-dev-secret-change-me',
     resave: false,
     saveUninitialized: false,
-    cookie: {
-        httpOnly: true,
-        maxAge: 1000 * 60 * 60 * 24 // 24h
-    }
+    cookie: { httpOnly: true, maxAge: 1000 * 60 * 60 * 24 }
 }));
 
 function requireAuth(req, res, next) {
@@ -37,7 +24,6 @@ function requireAuth(req, res, next) {
     next();
 }
 
-// Page protégée : doit être déclarée AVANT express.static pour intercepter la requête.
 app.get('/dashboard.html', requireAuth, (req, res) => {
     res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
