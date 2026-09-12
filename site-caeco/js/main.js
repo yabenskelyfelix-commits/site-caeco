@@ -98,7 +98,8 @@ function initialiserLogin() {
     const erreur = params.get('error');
     const messages = {
         invalid: 'Email ou mot de passe incorrect.',
-        auth: 'Veuillez vous connecter pour accéder à cette page.'
+        auth: 'Veuillez vous connecter pour accéder à cette page.',
+        rate_limited: 'Trop de tentatives. Veuillez réessayer dans quelques minutes.'
     };
     if (erreur && messages[erreur]) {
         zoneErreur.textContent = messages[erreur];
@@ -115,9 +116,11 @@ function initialiserRegister() {
     const erreur = params.get('error');
     const messages = {
         missing: 'Veuillez remplir tous les champs obligatoires.',
+        invalid_email: 'Veuillez saisir une adresse email valide.',
         weak: 'Le mot de passe doit contenir au moins 8 caractères.',
         mismatch: 'Les mots de passe ne correspondent pas.',
-        exists: 'Un compte existe déjà avec cet email.'
+        exists: 'Un compte existe déjà avec cet email.',
+        rate_limited: 'Trop de tentatives. Veuillez réessayer dans quelques minutes.'
     };
     if (erreur && messages[erreur]) {
         zoneErreur.textContent = messages[erreur];

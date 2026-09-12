@@ -349,19 +349,18 @@ section{
 
     text-align: center;
 
-    border-radius: 0 0 64px 12px;
-    padding: 100px 30px;
+    background:
+        linear-gradient(180deg, rgba(14, 34, 51, 0.70), rgba(14, 34, 51, 0.50)),
+        url("images/caeco.png") center/cover no-repeat;
+    border-radius: 0 0 40px 8px;
+    padding: 64px 30px 56px;
 
     overflow: hidden;
 }
 
 .intro h2{
-    font-size:2.8rem;
-    color:var(--blue-900);
     font-weight:700;
     animation:fadeUp 1s ease;
-    margin-top: -230px; 
-    line-height: 0;
 }
 
 .intro h3{
@@ -686,7 +685,6 @@ input[type="checkbox"]{
     }
 
     .container{width:92%;}
-    .intro h2{font-size:2.2rem;}
     .about,.services,.publications,.contact{padding:35px;}
 }
 
@@ -696,14 +694,13 @@ input[type="checkbox"]{
     header h1{font-size:1.25rem;}
     .login-btn{padding:9px 16px;font-size:.85rem;}
     .intro{padding:70px 20px;border-radius:0 0 40px 8px;}
-    .intro h2{font-size:1.8rem;}
     .intro h3{font-size:1.1rem;}
-    .intro .logo{width:220px;}
     .container{padding:40px 0;}
     .about,.services,.publications,.contact{padding:25px;}
     h2{font-size:1.6rem;}
     .services ul{grid-template-columns:1fr;}
     .article-card{padding:20px;}
+    .blog-list{margin:15px 0;}
 }
 
 /* ---------------- PIED DE PAGE ---------------- */
@@ -931,20 +928,6 @@ select:focus-visible{
     overflow: hidden; /* Maintient les coins arrondis */
     
 }
-
-.intro {
-    position: relative; /* Indispensable pour le pseudo-élément ::before */
-    /* 1. Le dégradé sombre doit être placé AVANT l'image pour se superposer dessus */
-    background: 
-        linear-gradient(180deg, rgba(14, 34, 51, 0.70), rgba(14, 34, 51, 0.50)),
-        url("images/caeco.png") center/cover no-repeat;
-    border-radius: 0 0 40px 8px;
-    padding: 64px 30px 56px;
-    text-align: center;
-    overflow: hidden; /* Maintient les coins arrondis */
-    
-}
-
 
 /* Pseudo-élément désactivé/nettoyé pour éviter le voile blanc écrasant */
 .page-intro::before {
@@ -1613,6 +1596,7 @@ main > .container:not(.intro):not(.page-intro):not(.blog-list){
     .contact-info-grid{
         grid-template-columns:1fr;
     }
+    .intro h2,
     .page-intro h2{
         font-size:1.9rem;
     }
@@ -1626,6 +1610,7 @@ main > .container:not(.intro):not(.page-intro):not(.blog-list){
         padding:48px 20px 42px;
         border-radius:0 0 28px 6px;
     }
+    .intro h2,
     .page-intro h2{
         font-size:1.6rem;
     }
