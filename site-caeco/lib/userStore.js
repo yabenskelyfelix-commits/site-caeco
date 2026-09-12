@@ -38,7 +38,7 @@ function createUser({ prenom, nom, email, telephone, passwordHash }) {
         id: db.nextId,
         prenom,
         nom,
-        email,
+        email: email.trim().toLowerCase(),
         telephone: telephone || '',
         passwordHash
     };
