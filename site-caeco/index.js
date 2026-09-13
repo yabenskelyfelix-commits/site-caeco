@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const userStore = require('./lib/userStore');
+const offerStore = require('./lib/offerStore');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -35,6 +36,34 @@ function requireAuth(req, res, next) {
         return res.redirect('/login.html?error=auth');
     }
     next();
+}
+
+// L'équipe CAECO est désignée par une liste d'emails en variable d'environnement,
+// faute d'un vrai système de rôles pour l'instant (ADMIN_EMAILS="a@caeco.com,b@caeco.com").
+const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || '')
+    .split(',')
+    .map(e => e.trim().toLowerCase())
+    .filter(Boolean);
+
+function estAdmin(user) {
+    return !!user && ADMIN_EMAILS.includes(user.email);
+}
+
+function requireAdmin(req, res, next) {
+    if (!req.session.userId) {
+        return res.status(401).json({ error: 'not_authenticated' });
+    }
+    const user = userStore.findById(req.session.userId);
+    if (!estAdmin(user)) {
+        return res.status(403).json({ error: 'forbidden' });
+    }
+    next();
+}
+
+function offreEstExpiree(dateExpiration) {
+    if (!dateExpiration) return false;
+    const aujourdHui = new Date().toISOString().slice(0, 10);
+    return dateExpiration < aujourdHui;
 }
 
 const loginAttempts = new Map();
@@ -124,6 +153,41 @@ app.get('/api/me', (req, res) => {
         email: user.email,
         telephone: user.telephone
     });
+});
+
+app.get('/api/offers', requireAuth, (req, res) => {
+    const user = userStore.findById(req.session.userId);
+    const offres = offerStore.getAllOffers()
+        .map(o => ({ ...o, expiree: offreEstExpiree(o.dateExpiration) }))
+        .sort((a, b) => b.id - a.id);
+
+    res.json({ offres, estAdmin: estAdmin(user) });
+});
+
+app.post('/api/offers', requireAdmin, (req, res) => {
+    const { titre, description, dateExpiration } = req.body;
+
+    if (!titre || !titre.trim() || !description || !description.trim()) {
+        return res.status(400).json({ error: 'missing_fields' });
+    }
+    if (dateExpiration && !/^\d{4}-\d{2}-\d{2}$/.test(dateExpiration)) {
+        return res.status(400).json({ error: 'invalid_date' });
+    }
+
+    const offre = offerStore.createOffer({
+        titre: titre.trim(),
+        description: description.trim(),
+        dateExpiration: dateExpiration || null
+    });
+    res.status(201).json(offre);
+});
+
+app.delete('/api/offers/:id', requireAdmin, (req, res) => {
+    const id = Number(req.params.id);
+    if (!offerStore.deleteOffer(id)) {
+        return res.status(404).json({ error: 'not_found' });
+    }
+    res.status(204).end();
 });
 
 const BLOCKED_STATIC_PATHS = [

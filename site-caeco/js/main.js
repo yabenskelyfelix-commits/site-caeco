@@ -176,6 +176,115 @@ function initialiserDashboard(baseChargee) {
         });
 }
 
+/* --- dashboard.html : liste des offres CAECO (visible par tous),
+   avec formulaire de publication pour l'équipe CAECO uniquement --- */
+function initialiserOffres() {
+    const liste = document.getElementById('offers-list');
+    if (!liste) return;
+
+    const formulaire = document.getElementById('offer-form');
+    const zoneErreurForm = document.getElementById('offer-form-error');
+
+    function echapperHtml(texte) {
+        const div = document.createElement('div');
+        div.textContent = texte;
+        return div.innerHTML;
+    }
+
+    function formaterDate(dateStr) {
+        const [annee, mois, jour] = dateStr.split('-');
+        return `${jour}/${mois}/${annee}`;
+    }
+
+    function supprimerOffre(id, carte) {
+        fetch(`/api/offers/${id}`, { method: 'DELETE' })
+            .then(res => {
+                if (res.ok) carte.remove();
+            });
+    }
+
+    function creerCarteOffre(offre, admin) {
+        const carte = document.createElement('article');
+        carte.className = 'offer-card' + (offre.expiree ? ' offer-card-expired' : '');
+
+        const expiration = offre.dateExpiration
+            ? `Expire le ${formaterDate(offre.dateExpiration)}`
+            : "Sans date d'expiration";
+
+        carte.innerHTML = `
+            <div class="offer-card-header">
+                <h3>${echapperHtml(offre.titre)}</h3>
+                <span class="status-badge ${offre.expiree ? 'status-expired' : 'status-active'}">
+                    ${offre.expiree ? 'Expirée' : 'Active'}
+                </span>
+            </div>
+            <p>${echapperHtml(offre.description)}</p>
+            <p class="offer-meta">Publiée le ${formaterDate(offre.datePublication)} · ${expiration}</p>
+        `;
+
+        if (admin) {
+            const boutonSupprimer = document.createElement('button');
+            boutonSupprimer.type = 'button';
+            boutonSupprimer.className = 'offer-delete';
+            boutonSupprimer.textContent = 'Supprimer';
+            boutonSupprimer.addEventListener('click', () => supprimerOffre(offre.id, carte));
+            carte.appendChild(boutonSupprimer);
+        }
+
+        return carte;
+    }
+
+    function chargerOffres() {
+        fetch('/api/offers')
+            .then(res => res.json())
+            .then(({ offres, estAdmin }) => {
+                if (estAdmin && formulaire) {
+                    formulaire.hidden = false;
+                }
+                liste.innerHTML = '';
+                if (offres.length === 0) {
+                    liste.innerHTML = '<div class="empty-state"><p class="empty-state-icon" aria-hidden="true">📢</p><p>Aucune offre publiée pour l\'instant.</p></div>';
+                    return;
+                }
+                offres.forEach(offre => liste.appendChild(creerCarteOffre(offre, estAdmin)));
+            })
+            .catch(() => {
+                liste.innerHTML = '<p class="form-note">Impossible de charger les offres pour le moment.</p>';
+            });
+    }
+
+    if (formulaire) {
+        formulaire.addEventListener('submit', e => {
+            e.preventDefault();
+            zoneErreurForm.style.display = 'none';
+
+            fetch('/api/offers', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    titre: document.getElementById('offer-titre').value.trim(),
+                    description: document.getElementById('offer-description').value.trim(),
+                    dateExpiration: document.getElementById('offer-expiration').value || null
+                })
+            })
+                .then(res => {
+                    if (!res.ok) throw new Error('erreur');
+                    return res.json();
+                })
+                .then(() => {
+                    formulaire.reset();
+                    chargerOffres();
+                })
+                .catch(() => {
+                    zoneErreurForm.textContent = "Impossible de publier l'offre. Vérifiez les champs.";
+                    zoneErreurForm.style.display = 'block';
+                });
+        });
+    }
+
+    chargerOffres();
+}
+
 /* ------------------------------------------------------------
    DÉMARRAGE
    ------------------------------------------------------------ */
@@ -184,4 +293,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initialiserLogin();
     initialiserRegister();
     initialiserDashboard(baseChargee);
+    initialiserOffres();
 });

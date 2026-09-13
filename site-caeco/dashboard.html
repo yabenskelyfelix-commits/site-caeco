@@ -27,6 +27,37 @@
         </div>
     </section>
 
+    <!-- OFFRES CAECO -->
+    <div class="container dashboard-section">
+        <section class="dashboard-card offers-section" aria-label="Offres CAECO">
+            <div class="dashboard-card-header">
+                <h2>Offres CAECO</h2>
+            </div>
+
+            <!-- Formulaire de publication : affiché uniquement pour l'équipe CAECO (voir ADMIN_EMAILS côté serveur) -->
+            <form id="offer-form" class="offer-form" hidden>
+                <p id="offer-form-error" class="form-error" style="display:none;"></p>
+                <div class="offer-form-row">
+                    <div>
+                        <label for="offer-titre">Titre</label>
+                        <input type="text" id="offer-titre" name="titre" placeholder="Titre de l'offre" required>
+                    </div>
+                    <div>
+                        <label for="offer-expiration">Date d'expiration (optionnelle)</label>
+                        <input type="date" id="offer-expiration" name="dateExpiration">
+                    </div>
+                </div>
+                <label for="offer-description">Description</label>
+                <textarea id="offer-description" name="description" placeholder="Décrivez l'offre" required></textarea>
+                <button type="submit" class="btn btn-sm">Publier l'offre</button>
+            </form>
+
+            <div id="offers-list" class="offers-list">
+                <p class="form-note">Chargement des offres…</p>
+            </div>
+        </section>
+    </div>
+
     <div class="container dashboard-grid">
 
         <div class="dashboard-main">
