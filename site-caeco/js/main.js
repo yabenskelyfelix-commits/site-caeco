@@ -139,8 +139,10 @@ function initialiserRegister() {
     }
 }
 
-/* --- dashboard.html : chargement des informations utilisateur --- */
-function initialiserDashboard() {
+/* --- dashboard.html : chargement des informations utilisateur ---
+   baseChargee : promesse de chargerBase(), pour attendre que le header
+   (et donc .login-btn) soit bien dans le DOM avant de le modifier. */
+function initialiserDashboard(baseChargee) {
     const zonePrenom = document.getElementById('user-prenom');
     if (!zonePrenom) return;
 
@@ -154,6 +156,20 @@ function initialiserDashboard() {
             document.getElementById('user-nom-complet').textContent = `${user.prenom} ${user.nom}`;
             document.getElementById('user-email').textContent = user.email;
             document.getElementById('user-telephone').textContent = user.telephone || 'Non renseigné';
+
+            const avatar = document.getElementById('user-avatar');
+            if (avatar) {
+                avatar.textContent = `${user.prenom.charAt(0)}${user.nom.charAt(0)}`.toUpperCase();
+            }
+
+            // L'utilisateur est authentifié ici : le bouton d'en-tête devient la déconnexion
+            Promise.resolve(baseChargee).then(() => {
+                const boutonCompte = document.querySelector('.login-btn');
+                if (boutonCompte) {
+                    boutonCompte.textContent = 'Déconnexion';
+                    boutonCompte.href = '/logout';
+                }
+            });
         })
         .catch(() => {
             window.location.href = 'login.html?error=auth';
@@ -164,8 +180,8 @@ function initialiserDashboard() {
    DÉMARRAGE
    ------------------------------------------------------------ */
 document.addEventListener('DOMContentLoaded', () => {
-    chargerBase();
+    const baseChargee = chargerBase();
     initialiserLogin();
     initialiserRegister();
-    initialiserDashboard();
+    initialiserDashboard(baseChargee);
 });

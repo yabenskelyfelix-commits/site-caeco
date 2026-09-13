@@ -18,51 +18,72 @@
 
     <!-- INTRODUCTION -->
     <section class="container page-intro">
-        <h2>Bienvenue, <span id="user-prenom">…</span></h2>
-        <p>Retrouvez ici vos informations et le suivi de vos demandes CAECO.</p>
+        <div class="dashboard-welcome">
+            <div class="user-avatar" id="user-avatar" aria-hidden="true">…</div>
+            <div>
+                <h2>Bienvenue, <span id="user-prenom">…</span></h2>
+                <p>Retrouvez ici vos informations et le suivi de vos demandes CAECO.</p>
+            </div>
+        </div>
     </section>
 
-    <!-- MES INFORMATIONS -->
-    <section class="container account-info">
-        <h2>Mes informations</h2>
-        <p><strong>Nom :</strong> <span id="user-nom-complet">…</span></p>
-        <p><strong>Email :</strong> <span id="user-email">…</span></p>
-        <p><strong>Téléphone :</strong> <span id="user-telephone">…</span></p>
-        <a href="#" class="btn">Modifier mes informations</a>
-    </section>
+    <div class="container dashboard-grid">
 
-    <!-- MES DEMANDES -->
-    <section class="container account-requests">
-        <h2>Mes demandes</h2>
-        <!-- Liste dynamique des demandes de contact / partenariat / informations soumises par l'utilisateur -->
-        <table class="requests-table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Type</th>
-                    <th>Sujet</th>
-                    <th>Statut</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>[À COMPLÉTER : date]</td>
-                    <td>[À COMPLÉTER : contact / partenariat / information]</td>
-                    <td>[À COMPLÉTER : sujet]</td>
-                    <td>[À COMPLÉTER : statut]</td>
-                </tr>
-            </tbody>
-        </table>
-        <p>Aucune demande en cours ? <a href="contact.html">Faites-en une nouvelle</a>.</p>
-    </section>
+        <div class="dashboard-main">
 
-    <!-- MES SERVICES -->
-    <section class="container account-services">
-        <h2>Mes services</h2>
-        <!-- Liste des services souscrits ou suivis par l'utilisateur -->
-        <p>[À COMPLÉTER : liste des services actifs de l'utilisateur, ou message si aucun service en cours]</p>
-        <a href="services.html" class="btn">Découvrir nos services</a>
-    </section>
+            <!-- MES DEMANDES -->
+            <section class="dashboard-card account-requests">
+                <div class="dashboard-card-header">
+                    <h2>Mes demandes</h2>
+                    <a href="contact.html" class="btn btn-sm">Nouvelle demande</a>
+                </div>
+                <!-- Liste dynamique des demandes de contact / partenariat / information soumises
+                     par l'utilisateur. Une fois le backend en place, remplacer l'état vide
+                     ci-dessous par un <table class="requests-table"> (voir style.css) rempli
+                     des vraies demandes, chaque statut affiché via <span class="status-badge">. -->
+                <div class="empty-state">
+                    <p class="empty-state-icon" aria-hidden="true">📋</p>
+                    <p>Vous n'avez pas encore de demande en cours.</p>
+                    <a href="contact.html" class="btn">Faire une demande</a>
+                </div>
+            </section>
+
+            <!-- MES SERVICES -->
+            <section class="dashboard-card account-services">
+                <h2>Mes services</h2>
+                <!-- Liste des services souscrits ou suivis par l'utilisateur -->
+                <div class="empty-state">
+                    <p class="empty-state-icon" aria-hidden="true">🛠️</p>
+                    <p>Vous ne suivez aucun service pour l'instant.</p>
+                    <a href="services.html" class="btn">Découvrir nos services</a>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- MES INFORMATIONS -->
+        <aside class="dashboard-card profile-card account-info" aria-label="Mes informations">
+            <h2>Mes informations</h2>
+            <dl class="profile-details">
+                <div>
+                    <dt>Nom complet</dt>
+                    <dd id="user-nom-complet">…</dd>
+                </div>
+                <div>
+                    <dt>Email</dt>
+                    <dd id="user-email">…</dd>
+                </div>
+                <div>
+                    <dt>Téléphone</dt>
+                    <dd id="user-telephone">…</dd>
+                </div>
+            </dl>
+            <button type="button" class="btn btn-outline" disabled>Modifier mes informations</button>
+            <p class="form-note">Fonctionnalité bientôt disponible.</p>
+            <a href="/logout" class="account-logout">Se déconnecter</a>
+        </aside>
+
+    </div>
 
 </main>
 

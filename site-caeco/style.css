@@ -962,7 +962,7 @@ select:focus-visible{
    Toute section de contenu devient automatiquement une carte
    blanche au coin feuille — sauf les héros et les grilles. */
 
-main > .container:not(.intro):not(.page-intro):not(.blog-list){
+main > .container:not(.intro):not(.page-intro):not(.blog-list):not(.dashboard-grid){
     background:var(--white);
     border-radius:var(--radius);
     box-shadow:var(--shadow);
@@ -1398,6 +1398,182 @@ main > .container:not(.intro):not(.page-intro):not(.blog-list){
     background:var(--blue-50);
 }
 
+/* Bandeau d'accueil : avatar + salutation côte à côte */
+.dashboard-welcome{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:22px;
+    text-align:left;
+}
+
+.user-avatar{
+    flex-shrink:0;
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--blue-600),var(--green-600));
+    color:var(--white);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.3rem;
+    font-weight:700;
+    letter-spacing:.02em;
+    box-shadow:var(--shadow-blue);
+    border:3px solid rgba(255,255,255,.5);
+}
+
+/* Grille principale : contenu (demandes, services) + colonne profil */
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+    align-items:start;
+}
+
+.dashboard-main{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+    min-width:0;
+}
+
+.dashboard-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    border:1px solid var(--blue-100);
+    padding:40px;
+}
+
+.dashboard-card-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.dashboard-card-header h2{
+    margin-bottom:0;
+}
+
+.btn-sm{
+    padding:9px 18px;
+    font-size:.85rem;
+}
+
+/* État vide : icône + message + action, tant qu'aucune donnée réelle n'existe */
+.empty-state{
+    text-align:center;
+    padding:25px 10px 10px;
+    color:var(--gray);
+}
+
+.empty-state-icon{
+    font-size:2.4rem;
+    line-height:1;
+    margin-bottom:12px;
+}
+
+.empty-state p{
+    max-width:420px;
+    margin:0 auto 20px;
+}
+
+/* Carte profil de la colonne latérale */
+.profile-card{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+}
+
+.profile-details{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.profile-details div{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+}
+
+.profile-details dt{
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--green-700);
+    font-weight:600;
+}
+
+.profile-details dd{
+    color:var(--dark);
+    font-weight:500;
+    word-break:break-word;
+}
+
+.btn-outline{
+    display:block;
+    text-align:center;
+    background:transparent;
+    color:var(--blue-700);
+    border:2px solid var(--blue-200);
+    box-shadow:none;
+    width:100%;
+}
+
+.btn-outline:hover{
+    background:var(--blue-50);
+    color:var(--blue-700);
+    transform:none;
+    box-shadow:none;
+}
+
+.btn-outline:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+}
+
+.btn-outline:disabled:hover{
+    background:transparent;
+}
+
+.account-logout{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    color:#8C1D18;
+    font-weight:600;
+    text-align:center;
+    padding:10px;
+    border-radius:var(--radius-soft);
+}
+
+.account-logout:hover{
+    background:#FDECEA;
+    color:#8C1D18;
+}
+
+@media(max-width:900px){
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+    .dashboard-welcome{
+        flex-direction:column;
+        text-align:center;
+    }
+    .dashboard-card{
+        padding:28px 22px;
+    }
+}
+
 /* ---------------- PUBLICATIONS : liste et article ---------------- */
 
 .article-thumb{
@@ -1590,7 +1766,7 @@ main > .container:not(.intro):not(.page-intro):not(.blog-list){
 /* ---------------- RESPONSIVE des pages internes ---------------- */
 
 @media(max-width:900px){
-    main > .container:not(.intro):not(.page-intro):not(.blog-list){
+    main > .container:not(.intro):not(.page-intro):not(.blog-list):not(.dashboard-grid){
         padding:35px;
     }
     .contact-info-grid{
@@ -1603,7 +1779,7 @@ main > .container:not(.intro):not(.page-intro):not(.blog-list){
 }
 
 @media(max-width:600px){
-    main > .container:not(.intro):not(.page-intro):not(.blog-list){
+    main > .container:not(.intro):not(.page-intro):not(.blog-list):not(.dashboard-grid){
         padding:25px 20px;
     }
     .page-intro{
